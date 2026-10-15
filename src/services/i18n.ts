@@ -1,0 +1,163 @@
+import { AppLanguage, CalendarType } from '../types';
+
+export const TRANSLATIONS: Record<AppLanguage, Record<string, string>> = {
+  fa: {
+    appTitle: 'سامانه یکپارچه مدیریت شرکت ساختمانی افغانستان',
+    appSub: 'پلتفرم مهندسی و معماری — نسخه ۱.۰',
+    dashboard: 'داشبورد اجرایی',
+    projects: 'پروژه‌ها',
+    drawings: 'نقشه‌ها و CAD',
+    catalog: 'کاتالوگ ۱۰۹ نقشه',
+    notes: 'یادداشت‌های متمرکز',
+    bim: 'مدل‌سازی BIM 3D',
+    boq: 'متره و برآورد (BOQ)',
+    geotech: 'ژئوتکنیک و خاک',
+    inventory: 'انبار و مصالح',
+    fieldReport: 'گزارش میدانی',
+    schedule: 'زمان‌بندی و WBS',
+    finance: 'مالی و فاکتورها',
+    hr: 'پرسنل و ایمنی HSE',
+    permits: 'جوازها و مقررات',
+    aiAssistant: 'مشاور هوش مصنوعی',
+    tests: 'تست‌های کیفی و پذیرش',
+    settings: 'تنظیمات و دسترس‌پذیری',
+    docs: 'مستندات معماری',
+    offlineStatus: 'آفلاین — ۳ در صف',
+    onlineStatus: 'آنلاین — همگام‌سازی ابری',
+    syncingStatus: 'در حال همگام‌سازی تدریجی...',
+    language: 'زبان',
+    dari: 'دری',
+    pashto: 'پشتو',
+    english: 'English',
+    calendar: 'تقویم',
+    solar: 'شمسی',
+    gregorian: 'میلادی',
+    role: 'نقش فعال',
+    project: 'پروژه جاری',
+    searchPlaceholder: 'جستجو در سراسر سامانه (Ctrl + K)...',
+    currencyAFN: '؋ افغانی',
+    draft: 'پیش‌نویس',
+    review: 'در انتظار بازبینی',
+    published: 'منتشرشده',
+    superseded: 'منسوخ‌شده',
+    conflict: 'تعارض نسخه',
+  },
+  ps: {
+    appTitle: 'د افغانستان ساختماني شرکت مدغم مدیریت سیستم',
+    appSub: 'د انجنیرۍ او معمارۍ پلټفارم — لومړۍ نسخه',
+    dashboard: 'اجرائیوي ډشبورډ',
+    projects: 'پروژې',
+    drawings: 'نقشې او CAD',
+    catalog: 'د ۱۰۹ نقشو کټالوګ',
+    notes: 'متمرکز یادښتونه',
+    bim: 'د BIM درې بعدي ماډل',
+    boq: 'د لګښت اټکل (BOQ)',
+    geotech: 'جیوتخنیک او خاوره',
+    inventory: 'ګودام او توکي',
+    fieldReport: 'ساحوي راپور',
+    schedule: 'مهالوېش او WBS',
+    finance: 'مالي او بلونه',
+    hr: 'کارکوونکي او HSE',
+    permits: 'جوازونه او مقررات',
+    aiAssistant: 'هوښیار مشاور',
+    tests: 'د کیفیت او منلو ازموینې',
+    settings: 'تنظیمات او لاسرسی',
+    docs: 'د معمارۍ اسناد',
+    offlineStatus: 'آفلاین — ۳ په کتار کې',
+    onlineStatus: 'آنلاین — کلاوډ همغږي',
+    syncingStatus: 'د همغږۍ په حال کې...',
+    language: 'ژبه',
+    dari: 'دری',
+    pashto: 'پښتو',
+    english: 'English',
+    calendar: 'کلیزه',
+    solar: 'لمریز',
+    gregorian: 'زیږدیز',
+    role: 'فعال رول',
+    project: 'اوسنۍ پروژه',
+    searchPlaceholder: 'په ټول سیستم کې لټون (Ctrl + K)...',
+    currencyAFN: '؋ افغانۍ',
+    draft: 'مسوده',
+    review: 'تر کتنې لاندې',
+    published: 'خپور شوی',
+    superseded: 'منسوخ شوی',
+    conflict: 'د نسخې تناقض',
+  },
+  en: {
+    appTitle: 'Afghanistan Construction Integrated Management Platform',
+    appSub: 'Engineering & Architectural Platform — v1.0',
+    dashboard: 'Executive Dashboard',
+    projects: 'Projects',
+    drawings: 'Drawings & CAD',
+    catalog: 'Catalog (109 Drawings)',
+    notes: 'Centralized Notes',
+    bim: 'BIM 3D Modeling',
+    boq: 'Cost Estimator (BOQ)',
+    geotech: 'Geotechnical & Soil',
+    inventory: 'Inventory & Supply',
+    fieldReport: 'Field Progress Report',
+    schedule: 'Timeline & WBS',
+    finance: 'Finance & Invoices',
+    hr: 'Personnel & HSE Safety',
+    permits: 'Permits & Compliance',
+    aiAssistant: 'AI Consultant',
+    tests: 'Quality & Acceptance Tests',
+    settings: 'Settings & A11y',
+    docs: 'Architecture Specs',
+    offlineStatus: 'Offline — 3 in queue',
+    onlineStatus: 'Online — Cloud Synced',
+    syncingStatus: 'Syncing in progress...',
+    language: 'Language',
+    dari: 'Dari',
+    pashto: 'Pashto',
+    english: 'English',
+    calendar: 'Calendar',
+    solar: 'Solar Hijri',
+    gregorian: 'Gregorian',
+    role: 'Active Role',
+    project: 'Current Project',
+    searchPlaceholder: 'Search entire platform (Ctrl + K)...',
+    currencyAFN: 'AFN',
+    draft: 'Draft',
+    review: 'In Review',
+    published: 'Published',
+    superseded: 'Superseded',
+    conflict: 'Version Conflict',
+  }
+};
+
+export const ROLE_LABELS: Record<string, { fa: string; ps: string; en: string }> = {
+  ceo: { fa: 'مدیر عامل (CEO)', ps: 'عمومي رییس', en: 'CEO' },
+  technical_director: { fa: 'مدیر فنی', ps: 'تخنیکي مدیر', en: 'Technical Director' },
+  engineer_arch: { fa: 'مهندس معماری', ps: 'د معمارۍ انجنیر', en: 'Architectural Engineer' },
+  engineer_struct: { fa: 'مهندس سازه', ps: 'د ساختمان انجنیر', en: 'Structural Engineer' },
+  engineer_elec: { fa: 'مهندس برق', ps: 'د برښنا انجنیر', en: 'Electrical Engineer' },
+  engineer_mech: { fa: 'مهندس مکانیک', ps: 'د میخانیک انجنیر', en: 'Mechanical Engineer' },
+  geotech: { fa: 'متخصص ژئوتکنیک', ps: 'جیوتخنیک متخصص', en: 'Geotechnical Specialist' },
+  boq_estimator: { fa: 'کارشناس برآورد (BOQ)', ps: 'د لګښت برآورد کوونکی', en: 'BOQ Estimator' },
+  warehouse_manager: { fa: 'مسئول انبار', ps: 'د ګودام مسوول', en: 'Warehouse Manager' },
+  procurement_manager: { fa: 'مسئول خرید', ps: 'د پېرودلو مسوول', en: 'Procurement Manager' },
+  accountant: { fa: 'حسابدار', ps: 'محاسب', en: 'Accountant' },
+  project_manager: { fa: 'مدیر پروژه', ps: 'د پروژې مدیر', en: 'Project Manager' },
+  field_worker: { fa: 'کاربر میدانی', ps: 'ساحوي کارکوونکی', en: 'Field Worker' },
+};
+
+export function formatNumber(val: number, lang: AppLanguage = 'fa'): string {
+  if (lang === 'en') {
+    return val.toLocaleString('en-US');
+  }
+  return val.toLocaleString('fa-AF');
+}
+
+export function formatDate(solarDate: string, calendar: CalendarType = 'solar'): string {
+  if (calendar === 'gregorian') {
+    // Convert 1404/07/24 to approximate 2025/10/16
+    const parts = solarDate.split('/');
+    if (parts.length === 3) {
+      const year = parseInt(parts[0]) + 621;
+      return `${year}/${parts[1]}/${parts[2]}`;
+    }
+    return solarDate;
+  }
+  return solarDate;
+}

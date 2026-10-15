@@ -1,0 +1,167 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Default deny all access
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner(ownerId) {
+      return isSignedIn() && request.auth.uid == ownerId;
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() > 0 && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function existing() {
+      return resource.data;
+    }
+
+    // Projects rules
+    function isValidProject(data) {
+      return data.name is string && data.name.size() > 0 && data.name.size() <= 200
+        && data.code is string && data.code.size() > 0 && data.code.size() <= 50
+        && data.ownerId is string && data.ownerId.size() <= 128
+        && data.ownerId == request.auth.uid;
+    }
+
+    match /projects/{projectId} {
+      allow get: if isSignedIn() && isOwner(existing().ownerId);
+      allow list: if isSignedIn() && resource.data.ownerId == request.auth.uid;
+      allow create: if isSignedIn() && isValidId(projectId) && isValidProject(incoming());
+      allow update: if isSignedIn() && isValidId(projectId) && isValidProject(incoming())
+        && incoming().ownerId == existing().ownerId;
+      allow delete: if isSignedIn() && isValidId(projectId) && isOwner(existing().ownerId);
+    }
+
+    // Drawings rules
+    function isValidDrawing(data) {
+      return data.projectId is string && data.projectId.size() <= 128
+        && data.series is string && (data.series == 'A' || data.series == 'S' || data.series == 'E' || data.series == 'M')
+        && data.code is string && data.code.size() > 0 && data.code.size() <= 30
+        && data.title is string && data.title.size() > 0 && data.title.size() <= 250
+        && data.ownerId is string && data.ownerId.size() <= 128
+        && data.ownerId == request.auth.uid;
+    }
+
+    match /drawings/{drawingId} {
+      allow get: if isSignedIn() && isOwner(existing().ownerId);
+      allow list: if isSignedIn() && resource.data.ownerId == request.auth.uid;
+      allow create: if isSignedIn() && isValidId(drawingId) && isValidDrawing(incoming());
+      allow update: if isSignedIn() && isValidId(drawingId) && isValidDrawing(incoming())
+        && incoming().ownerId == existing().ownerId;
+      allow delete: if isSignedIn() && isValidId(drawingId) && isOwner(existing().ownerId);
+    }
+
+    // General Notes rules
+    function isValidGeneralNote(data) {
+      return data.code is string && data.code.size() > 0 && data.code.size() <= 50
+        && data.category is string && (data.category == 'architecture' || data.category == 'structure' || data.category == 'electrical' || data.category == 'mechanical' || data.category == 'general')
+        && data.title is string && data.title.size() > 0 && data.title.size() <= 250
+        && data.text is string && data.text.size() > 0 && data.text.size() <= 4000
+        && data.ownerId is string && data.ownerId.size() <= 128
+        && data.ownerId == request.auth.uid;
+    }
+
+    match /generalNotes/{noteId} {
+      allow get: if isSignedIn() && isOwner(existing().ownerId);
+      allow list: if isSignedIn() && resource.data.ownerId == request.auth.uid;
+      allow create: if isSignedIn() && isValidId(noteId) && isValidGeneralNote(incoming());
+      allow update: if isSignedIn() && isValidId(noteId) && isValidGeneralNote(incoming())
+        && incoming().ownerId == existing().ownerId;
+      allow delete: if isSignedIn() && isValidId(noteId) && isOwner(existing().ownerId);
+    }
+
+    // BOQ Items rules
+    function isValidBOQItem(data) {
+      return data.projectId is string && data.projectId.size() <= 128
+        && data.itemCode is string && data.itemCode.size() > 0 && data.itemCode.size() <= 50
+        && data.description is string && data.description.size() > 0 && data.description.size() <= 300
+        && data.quantity is number
+        && data.unitRate is number
+        && data.ownerId is string && data.ownerId.size() <= 128
+        && data.ownerId == request.auth.uid;
+    }
+
+    match /boqItems/{boqId} {
+      allow get: if isSignedIn() && isOwner(existing().ownerId);
+      allow list: if isSignedIn() && resource.data.ownerId == request.auth.uid;
+      allow create: if isSignedIn() && isValidId(boqId) && isValidBOQItem(incoming());
+      allow update: if isSignedIn() && isValidId(boqId) && isValidBOQItem(incoming())
+        && incoming().ownerId == existing().ownerId;
+      allow delete: if isSignedIn() && isValidId(boqId) && isOwner(existing().ownerId);
+    }
+
+    // Soil Tests rules
+    function isValidSoilTest(data) {
+      return data.projectId is string && data.projectId.size() <= 128
+        && data.boreholeId is string && data.boreholeId.size() > 0 && data.boreholeId.size() <= 50
+        && data.soilClassification is string && data.soilClassification.size() > 0 && data.soilClassification.size() <= 100
+        && data.bearingCapacityKpa is number
+        && data.ownerId is string && data.ownerId.size() <= 128
+        && data.ownerId == request.auth.uid;
+    }
+
+    match /soilTests/{soilTestId} {
+      allow get: if isSignedIn() && isOwner(existing().ownerId);
+      allow list: if isSignedIn() && resource.data.ownerId == request.auth.uid;
+      allow create: if isSignedIn() && isValidId(soilTestId) && isValidSoilTest(incoming());
+      allow update: if isSignedIn() && isValidId(soilTestId) && isValidSoilTest(incoming())
+        && incoming().ownerId == existing().ownerId;
+      allow delete: if isSignedIn() && isValidId(soilTestId) && isOwner(existing().ownerId);
+    }
+
+    // Inventory Items rules
+    function isValidInventoryItem(data) {
+      return data.itemCode is string && data.itemCode.size() > 0 && data.itemCode.size() <= 50
+        && data.name is string && data.name.size() > 0 && data.name.size() <= 200
+        && data.quantity is number
+        && data.unit is string && data.unit.size() > 0 && data.unit.size() <= 50
+        && data.ownerId is string && data.ownerId.size() <= 128
+        && data.ownerId == request.auth.uid;
+    }
+
+    match /inventoryItems/{inventoryId} {
+      allow get: if isSignedIn() && isOwner(existing().ownerId);
+      allow list: if isSignedIn() && resource.data.ownerId == request.auth.uid;
+      allow create: if isSignedIn() && isValidId(inventoryId) && isValidInventoryItem(incoming());
+      allow update: if isSignedIn() && isValidId(inventoryId) && isValidInventoryItem(incoming())
+        && incoming().ownerId == existing().ownerId;
+      allow delete: if isSignedIn() && isValidId(inventoryId) && isOwner(existing().ownerId);
+    }
+
+    // Compliance Permits rules
+    function isValidCompliancePermit(data) {
+      return data.projectId is string && data.projectId.size() <= 128
+        && data.permitType is string && data.permitType.size() > 0 && data.permitType.size() <= 150
+        && data.authority is string && data.authority.size() > 0 && data.authority.size() <= 200
+        && data.status is string && (data.status == 'pending' || data.status == 'under_review' || data.status == 'approved' || data.status == 'rejected')
+        && data.ownerId is string && data.ownerId.size() <= 128
+        && data.ownerId == request.auth.uid;
+    }
+
+    match /compliancePermits/{permitId} {
+      allow get: if isSignedIn() && isOwner(existing().ownerId);
+      allow list: if isSignedIn() && resource.data.ownerId == request.auth.uid;
+      allow create: if isSignedIn() && isValidId(permitId) && isValidCompliancePermit(incoming());
+      allow update: if isSignedIn() && isValidId(permitId) && isValidCompliancePermit(incoming())
+        && incoming().ownerId == existing().ownerId;
+      allow delete: if isSignedIn() && isValidId(permitId) && isOwner(existing().ownerId);
+    }
+
+    // Test connection document
+    match /test/connection {
+      allow read: if true;
+    }
+  }
+}

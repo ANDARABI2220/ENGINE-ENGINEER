@@ -1,0 +1,6 @@
+{
+  "name": "سامانه مهندسی و معماری ساختمانی (AfghanaBuild)",
+  "description": "سامانه یکپارچه مدیریت مهندسی، معماری، نقشه‌کشی، برآورد هزینه BOQ، سازه، مدل‌سازی سه‌بعدی و کنترل پروژه‌های ساختمانی افغانستان",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

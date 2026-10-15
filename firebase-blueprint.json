@@ -1,0 +1,167 @@
+{
+  "entities": {
+    "Project": {
+      "title": "Project",
+      "description": "Construction and engineering project profile",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "maxLength": 200 },
+        "code": { "type": "string", "maxLength": 50 },
+        "client": { "type": "string", "maxLength": 200 },
+        "location": { "type": "string", "maxLength": 100 },
+        "status": { "type": "string", "enum": ["planning", "active", "on_hold", "completed"] },
+        "budget": { "type": "number" },
+        "currency": { "type": "string", "maxLength": 10 },
+        "ownerId": { "type": "string", "maxLength": 128 },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["name", "code", "ownerId"]
+    },
+    "Drawing": {
+      "title": "Drawing",
+      "description": "Architectural, structural, electrical, or mechanical engineering drawing specification",
+      "type": "object",
+      "properties": {
+        "projectId": { "type": "string", "maxLength": 128 },
+        "series": { "type": "string", "enum": ["A", "S", "E", "M"] },
+        "code": { "type": "string", "maxLength": 30 },
+        "title": { "type": "string", "maxLength": 250 },
+        "floor": { "type": "string", "maxLength": 100 },
+        "version": { "type": "string", "maxLength": 20 },
+        "status": { "type": "string", "enum": ["draft", "review", "approved", "published"] },
+        "engineerName": { "type": "string", "maxLength": 150 },
+        "linkedNoteIds": { "type": "array" },
+        "cadData": { "type": "string", "maxLength": 200000 },
+        "ownerId": { "type": "string", "maxLength": 128 },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["projectId", "series", "code", "title", "ownerId"]
+    },
+    "GeneralNote": {
+      "title": "GeneralNote",
+      "description": "Centralized engineering standard note synchronized across drawing series",
+      "type": "object",
+      "properties": {
+        "code": { "type": "string", "maxLength": 50 },
+        "category": { "type": "string", "enum": ["architecture", "structure", "electrical", "mechanical", "general"] },
+        "title": { "type": "string", "maxLength": 250 },
+        "text": { "type": "string", "maxLength": 4000 },
+        "linkedDrawingCodes": { "type": "array" },
+        "version": { "type": "number" },
+        "status": { "type": "string", "enum": ["draft", "approved"] },
+        "createdBy": { "type": "string", "maxLength": 150 },
+        "ownerId": { "type": "string", "maxLength": 128 },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["code", "category", "title", "text", "ownerId"]
+    },
+    "BOQItem": {
+      "title": "BOQItem",
+      "description": "Bill of Quantities cost estimation line item",
+      "type": "object",
+      "properties": {
+        "projectId": { "type": "string", "maxLength": 128 },
+        "itemCode": { "type": "string", "maxLength": 50 },
+        "description": { "type": "string", "maxLength": 300 },
+        "unit": { "type": "string", "maxLength": 50 },
+        "quantity": { "type": "number" },
+        "unitRate": { "type": "number" },
+        "currency": { "type": "string", "maxLength": 10 },
+        "totalAmount": { "type": "number" },
+        "category": { "type": "string", "maxLength": 100 },
+        "region": { "type": "string", "maxLength": 100 },
+        "ownerId": { "type": "string", "maxLength": 128 },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["projectId", "itemCode", "description", "quantity", "unitRate", "ownerId"]
+    },
+    "SoilTest": {
+      "title": "SoilTest",
+      "description": "Geotechnical soil assessment and borehole results",
+      "type": "object",
+      "properties": {
+        "projectId": { "type": "string", "maxLength": 128 },
+        "boreholeId": { "type": "string", "maxLength": 50 },
+        "depthMeters": { "type": "number" },
+        "sptNValue": { "type": "number" },
+        "soilClassification": { "type": "string", "maxLength": 100 },
+        "bearingCapacityKpa": { "type": "number" },
+        "groundwaterDepthMeters": { "type": "number" },
+        "seismicZone": { "type": "string", "maxLength": 50 },
+        "recommendedFoundation": { "type": "string", "maxLength": 200 },
+        "engineerNotes": { "type": "string", "maxLength": 2000 },
+        "ownerId": { "type": "string", "maxLength": 128 },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["projectId", "boreholeId", "soilClassification", "bearingCapacityKpa", "ownerId"]
+    },
+    "InventoryItem": {
+      "title": "InventoryItem",
+      "description": "Warehouse and construction site supply chain inventory record",
+      "type": "object",
+      "properties": {
+        "itemCode": { "type": "string", "maxLength": 50 },
+        "name": { "type": "string", "maxLength": 200 },
+        "category": { "type": "string", "maxLength": 100 },
+        "warehouseLocation": { "type": "string", "maxLength": 150 },
+        "quantity": { "type": "number" },
+        "unit": { "type": "string", "maxLength": 50 },
+        "minThreshold": { "type": "number" },
+        "unitCost": { "type": "number" },
+        "supplierName": { "type": "string", "maxLength": 150 },
+        "origin": { "type": "string", "enum": ["domestic", "imported"] },
+        "qcStatus": { "type": "string", "enum": ["passed", "pending", "failed"] },
+        "ownerId": { "type": "string", "maxLength": 128 },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["itemCode", "name", "quantity", "unit", "ownerId"]
+    },
+    "CompliancePermit": {
+      "title": "CompliancePermit",
+      "description": "Municipal and national building code regulatory permit status",
+      "type": "object",
+      "properties": {
+        "projectId": { "type": "string", "maxLength": 128 },
+        "permitType": { "type": "string", "maxLength": 150 },
+        "authority": { "type": "string", "maxLength": 200 },
+        "status": { "type": "string", "enum": ["pending", "under_review", "approved", "rejected"] },
+        "referenceNumber": { "type": "string", "maxLength": 100 },
+        "notes": { "type": "string", "maxLength": 2000 },
+        "ownerId": { "type": "string", "maxLength": 128 },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["projectId", "permitType", "authority", "status", "ownerId"]
+    }
+  },
+  "firestore": {
+    "/projects/{projectId}": {
+      "schema": "Project",
+      "description": "Collection of engineering projects"
+    },
+    "/drawings/{drawingId}": {
+      "schema": "Drawing",
+      "description": "Collection of blueprints and engineering drawings"
+    },
+    "/generalNotes/{noteId}": {
+      "schema": "GeneralNote",
+      "description": "Collection of centralized cross-drawing standard notes"
+    },
+    "/boqItems/{boqId}": {
+      "schema": "BOQItem",
+      "description": "Collection of bill of quantities line items"
+    },
+    "/soilTests/{soilTestId}": {
+      "schema": "SoilTest",
+      "description": "Collection of soil tests and geotechnical records"
+    },
+    "/inventoryItems/{inventoryId}": {
+      "schema": "InventoryItem",
+      "description": "Collection of warehouse inventory and materials"
+    },
+    "/compliancePermits/{permitId}": {
+      "schema": "CompliancePermit",
+      "description": "Collection of building compliance and municipal permits"
+    }
+  }
+}

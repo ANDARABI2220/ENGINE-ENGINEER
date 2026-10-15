@@ -1,0 +1,420 @@
+/* ============================================================================
+ * AfghanaBuild — Design Tokens Specification (v1.0.0)
+ * سامانه مهندسی و معماری ساختمانی افغانستان
+ * Conforming to WCAG 2.1 AA / AAA Contrast Compliance
+ * Base Typography Scale: 1rem = 16px, 4px Spacing Grid
+ * Support: Chrome 90+, Firefox 88+, Safari 14+, Edge 90+
+ * RTL (fa/ps) + LTR (en) aware via CSS Logical Properties
+ * ==========================================================================*/
+
+/* 1. Color Primitives (خام و بدون معنای تفسیری) */
+:root {
+  /* --- Primary / Construction Gold (کهربایی ساختمانی) --- */
+  --ab-amber-50: #fffbeb;
+  --ab-amber-100: #fef3c7;
+  --ab-amber-200: #fde68a;
+  --ab-amber-300: #fcd34d;
+  --ab-amber-400: #fbbf24;
+  --ab-amber-500: #f59e0b;
+  --ab-amber-600: #d97706;
+  --ab-amber-700: #b45309;
+  --ab-amber-800: #92400e;
+  --ab-amber-900: #78350f;
+  --ab-amber-950: #451a03;
+
+  /* --- Secondary / Blueprint Cyan (فیروزه‌ای نقشه‌کشی) --- */
+  --ab-sky-50: #f0f9ff;
+  --ab-sky-100: #e0f2fe;
+  --ab-sky-200: #bae6fd;
+  --ab-sky-300: #7dd3fc;
+  --ab-sky-400: #38bdf8;
+  --ab-sky-500: #0ea5e9;
+  --ab-sky-600: #0284c7;
+  --ab-sky-700: #0369a1;
+  --ab-sky-800: #075985;
+  --ab-sky-900: #0c4a6e;
+  --ab-sky-950: #082f49;
+
+  /* --- Neutral / Steel Slate (خاکستری فولادی) --- */
+  --ab-slate-50: #f8fafc;
+  --ab-slate-100: #f1f5f9;
+  --ab-slate-200: #e2e8f0;
+  --ab-slate-300: #cbd5e1;
+  --ab-slate-400: #94a3b8;
+  --ab-slate-500: #64748b;
+  --ab-slate-600: #475569;
+  --ab-slate-700: #334155;
+  --ab-slate-800: #1e293b;
+  --ab-slate-900: #0f172a;
+  --ab-slate-950: #020617;
+
+  /* --- Status Primitives --- */
+  --ab-emerald-300: #6ee7b7;
+  --ab-emerald-400: #34d399;
+  --ab-emerald-500: #10b981;
+  --ab-emerald-600: #059669;
+  --ab-emerald-700: #047857;
+  --ab-emerald-800: #065f46;
+
+  --ab-rose-300: #fda4af;
+  --ab-rose-400: #fb7185;
+  --ab-rose-500: #f43f5e;
+  --ab-rose-600: #e11d48;
+  --ab-rose-700: #be123c;
+  --ab-rose-800: #9f1239;
+
+  --ab-violet-300: #d8b4fe;
+  --ab-violet-400: #c084fc;
+  --ab-violet-500: #a855f7;
+  --ab-violet-600: #9333ea;
+  --ab-violet-700: #7e22ce;
+
+  /* --- Spacing Scale (4px Base Grid) --- */
+  --ab-space-0: 0;
+  --ab-space-px: 1px;
+  --ab-space-0-5: 0.125rem; /* 2px */
+  --ab-space-1: 0.25rem;   /* 4px - xs */
+  --ab-space-1-5: 0.375rem; /* 6px */
+  --ab-space-2: 0.5rem;    /* 8px - sm */
+  --ab-space-2-5: 0.625rem; /* 10px */
+  --ab-space-3: 0.75rem;   /* 12px */
+  --ab-space-4: 1rem;      /* 16px - md */
+  --ab-space-5: 1.25rem;   /* 20px */
+  --ab-space-6: 1.5rem;    /* 24px - lg */
+  --ab-space-7: 1.75rem;   /* 28px */
+  --ab-space-8: 2rem;      /* 32px - xl */
+  --ab-space-10: 2.5rem;   /* 40px */
+  --ab-space-12: 3rem;     /* 48px - 2xl */
+  --ab-space-16: 4rem;     /* 64px - 3xl */
+  --ab-space-24: 6rem;     /* 96px - 4xl */
+  --ab-space-32: 8rem;     /* 128px */
+
+  /* Spacing Aliases */
+  --ab-space-xs: var(--ab-space-1);
+  --ab-space-sm: var(--ab-space-2);
+  --ab-space-md: var(--ab-space-4);
+  --ab-space-lg: var(--ab-space-6);
+  --ab-space-xl: var(--ab-space-8);
+  --ab-space-2xl: var(--ab-space-12);
+  --ab-space-3xl: var(--ab-space-16);
+
+  /* --- Border Radius --- */
+  --ab-radius-none: 0;
+  --ab-radius-xs: 0.25rem;  /* 4px */
+  --ab-radius-sm: 0.375rem; /* 6px */
+  --ab-radius-md: 0.5rem;   /* 8px - Buttons & Inputs */
+  --ab-radius-lg: 0.75rem;  /* 12px - Cards */
+  --ab-radius-xl: 1rem;     /* 16px - Modals & Elevated Panels */
+  --ab-radius-2xl: 1.25rem; /* 20px */
+  --ab-radius-3xl: 1.5rem;  /* 24px */
+  --ab-radius-full: 9999px; /* Pills & Badges */
+
+  /* --- Layout & Structural Heights --- */
+  --ab-header-height: 3.5rem;            /* 56px Top Navbar */
+  --ab-statusbar-height: 1.75rem;         /* 28px */
+  --ab-sidebar-width: 15rem;              /* 240px Expanded */
+  --ab-sidebar-width-collapsed: 4rem;     /* 64px Collapsed */
+  --ab-tabbar-height: 2.5rem;             /* 40px */
+  --ab-control-height-sm: 2rem;           /* 32px */
+  --ab-control-height-md: 2.5rem;         /* 40px Default */
+  --ab-control-height-lg: 3rem;           /* 48px */
+  --ab-touch-target-min: 2.75rem;         /* 44px Minimum Touch Target */
+  --ab-container-xl: 80rem;               /* 1280px Max Content Container */
+
+  /* --- Z-Index Hierarchy --- */
+  --ab-z-base: 0;
+  --ab-z-dropdown: 1000;
+  --ab-z-sticky: 1020;
+  --ab-z-drawer-backdrop: 1040;
+  --ab-z-drawer: 1045;
+  --ab-z-modal-backdrop: 1050;
+  --ab-z-modal: 1055;
+  --ab-z-popover: 1060;
+  --ab-z-tooltip: 1070;
+  --ab-z-toast: 1080;
+  --ab-z-command: 1090;
+
+  /* --- Motion & Transitions --- */
+  --ab-duration-instant: 0ms;
+  --ab-duration-fast: 150ms;
+  --ab-duration-normal: 300ms;
+  --ab-duration-slow: 500ms;
+  --ab-duration-slower: 700ms;
+
+  --ab-ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --ab-ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --ab-ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --ab-ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* --- Typography Families --- */
+  --ab-font-sans: "Vazirmatn", "Inter", "Segoe UI", system-ui, sans-serif;
+  --ab-font-latin: "Inter", "Vazirmatn", system-ui, sans-serif;
+  --ab-font-mono: "JetBrains Mono", "Vazirmatn", monospace;
+
+  /* Font Sizes */
+  --ab-fs-3xs: 0.625rem;  /* 10px */
+  --ab-fs-2xs: 0.6875rem; /* 11px */
+  --ab-fs-xs: 0.75rem;    /* 12px */
+  --ab-fs-sm: 0.8125rem;  /* 13px */
+  --ab-fs-base: 0.875rem; /* 14px Body */
+  --ab-fs-md: 1rem;       /* 16px */
+  --ab-fs-lg: 1.125rem;   /* 18px */
+  --ab-fs-xl: 1.25rem;    /* 20px */
+  --ab-fs-2xl: 1.5rem;    /* 24px */
+  --ab-fs-3xl: 1.75rem;   /* 28px */
+  --ab-fs-4xl: 2rem;      /* 32px */
+  --ab-fs-5xl: 2.5rem;    /* 40px */
+}
+
+/* ============================================================================
+ * 2. SEMANTIC TOKENS: DARK MODE (Default: :root & [data-theme="dark"])
+ * ==========================================================================*/
+:root,
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  /* Surfaces & Backgrounds */
+  --ab-bg-app: #020617;                   /* neutral-950 obsidian */
+  --ab-bg-canvas: #0b1120;                /* CAD / 3D Canvas */
+  --ab-bg-surface: #0f172a;               /* neutral-900 Card / Panel surface */
+  --ab-bg-surface-elevated: #1e293b;      /* neutral-800 Modals, Tooltips */
+  --ab-bg-surface-sunken: #010409;        /* Input backgrounds, dark code */
+  --ab-bg-hover: rgba(148, 163, 184, 0.08);
+  --ab-bg-active: rgba(148, 163, 184, 0.14);
+  --ab-bg-overlay: rgba(2, 6, 23, 0.80);
+  --ab-bg-scrim: rgba(2, 6, 23, 0.60);
+  --ab-bg-glass: rgba(15, 23, 42, 0.78);
+
+  /* Typography Colors */
+  --ab-text-primary: #f8fafc;             /* AAA: 17.06:1 against surface */
+  --ab-text-secondary: #94a3b8;           /* AA: 6.96:1 */
+  --ab-text-muted: #64748b;               /* AA-Large for captions */
+  --ab-text-disabled: #475569;
+  --ab-text-inverse: #0f172a;
+  --ab-text-on-primary: #0f172a;          /* AAA: 9.39:1 dark text on amber */
+  --ab-text-on-accent: #020617;
+  --ab-text-link: #7dd3fc;
+  --ab-text-link-hover: #bae6fd;
+
+  /* Brand Primary & Secondary */
+  --ab-primary: #f59e0b;
+  --ab-primary-hover: #fbbf24;
+  --ab-primary-active: #d97706;
+  --ab-primary-subtle: rgba(245, 158, 11, 0.12);
+  --ab-primary-subtle-hover: rgba(245, 158, 11, 0.20);
+  --ab-primary-text: #fbbf24;
+  --ab-on-primary: #0f172a;
+
+  --ab-secondary: #38bdf8;
+  --ab-secondary-hover: #7dd3fc;
+  --ab-secondary-active: #0ea5e9;
+  --ab-secondary-subtle: rgba(56, 189, 248, 0.12);
+  --ab-secondary-text: #38bdf8;
+
+  /* Semantic Status (400 shades on dark) */
+  --ab-success: #10b981;
+  --ab-success-text: #34d399;             /* AAA: 9.29:1 */
+  --ab-success-bg: rgba(16, 185, 129, 0.12);
+  --ab-success-border: rgba(52, 211, 153, 0.40);
+
+  --ab-warning: #f59e0b;
+  --ab-warning-text: #fbbf24;             /* AAA: 10.69:1 */
+  --ab-warning-bg: rgba(245, 158, 11, 0.12);
+  --ab-warning-border: rgba(251, 191, 36, 0.40);
+
+  --ab-danger: #f43f5e;
+  --ab-danger-text: #fb7185;              /* AA: 6.63:1 */
+  --ab-danger-bg: rgba(244, 63, 94, 0.12);
+  --ab-danger-border: rgba(251, 113, 133, 0.40);
+
+  --ab-info: #0ea5e9;
+  --ab-info-text: #38bdf8;                /* AAA: 8.33:1 */
+  --ab-info-bg: rgba(14, 165, 233, 0.12);
+  --ab-info-border: rgba(56, 189, 248, 0.40);
+
+  --ab-published: #a855f7;
+  --ab-published-text: #c084fc;           /* AA: 6.76:1 */
+  --ab-published-bg: rgba(168, 85, 247, 0.12);
+  --ab-published-border: rgba(192, 132, 252, 0.40);
+
+  /* Borders (WCAG 1.4.11) */
+  --ab-border-subtle: #1e293b;            /* Dividers */
+  --ab-border-default: #334155;           /* Card & Panel border */
+  --ab-border-strong: #475569;
+  --ab-border-input: #64748b;             /* Form Input: 4.24:1 against app bg */
+  --ab-border-focus: #f59e0b;             /* 9.39:1 Amber Focus Ring */
+  --ab-border-disabled: #1e293b;
+
+  /* Elevation Shadows */
+  --ab-shadow-color: 2 6 23;
+  --ab-shadow-xs: 0 1px 2px 0 rgb(var(--ab-shadow-color) / 0.40);
+  --ab-shadow-sm: 0 1px 3px 0 rgb(var(--ab-shadow-color) / 0.50), 0 1px 2px -1px rgb(var(--ab-shadow-color) / 0.50);
+  --ab-shadow-md: 0 4px 6px -1px rgb(var(--ab-shadow-color) / 0.50), 0 2px 4px -2px rgb(var(--ab-shadow-color) / 0.50);
+  --ab-shadow-lg: 0 10px 15px -3px rgb(var(--ab-shadow-color) / 0.55), 0 4px 6px -4px rgb(var(--ab-shadow-color) / 0.55);
+  --ab-shadow-xl: 0 20px 25px -5px rgb(var(--ab-shadow-color) / 0.60), 0 8px 10px -6px rgb(var(--ab-shadow-color) / 0.60);
+  --ab-shadow-focus: 0 0 0 3px rgba(245, 158, 11, 0.35);
+
+  /* Backward Compatibility Aliases */
+  --color-primary: var(--ab-primary);
+  --color-primary-hover: var(--ab-primary-hover);
+  --color-secondary: var(--ab-secondary);
+  --color-bg-app: var(--ab-bg-app);
+  --color-bg-surface: var(--ab-bg-surface);
+  --color-bg-surface-elevated: var(--ab-bg-surface-elevated);
+  --color-bg-overlay: var(--ab-bg-overlay);
+  --color-success: var(--ab-success);
+  --color-warning: var(--ab-warning);
+  --color-error: var(--ab-danger);
+  --color-text-main: var(--ab-text-primary);
+  --color-text-muted: var(--ab-text-secondary);
+  --color-border-subtle: var(--ab-border-subtle);
+  --color-border-medium: var(--ab-border-default);
+  --color-border-focus: var(--ab-border-focus);
+}
+
+/* ============================================================================
+ * 3. SEMANTIC TOKENS: LIGHT MODE ([data-theme="light"])
+ * ==========================================================================*/
+[data-theme="light"] {
+  color-scheme: light;
+
+  /* Surfaces & Backgrounds */
+  --ab-bg-app: #f1f5f9;                   /* neutral-100 soft steel slate */
+  --ab-bg-canvas: #ffffff;
+  --ab-bg-surface: #ffffff;               /* Crisp pure white cards */
+  --ab-bg-surface-elevated: #ffffff;
+  --ab-bg-surface-sunken: #f8fafc;
+  --ab-bg-hover: rgba(15, 23, 42, 0.05);
+  --ab-bg-active: rgba(15, 23, 42, 0.09);
+  --ab-bg-overlay: rgba(15, 23, 42, 0.45);
+  --ab-bg-scrim: rgba(15, 23, 42, 0.35);
+  --ab-bg-glass: rgba(255, 255, 255, 0.85);
+
+  /* Typography Colors */
+  --ab-text-primary: #0f172a;             /* AAA: 17.85:1 against white */
+  --ab-text-secondary: #334155;           /* AAA: 10.35:1 */
+  --ab-text-muted: #64748b;               /* AA: 4.76:1 */
+  --ab-text-disabled: #94a3b8;
+  --ab-text-inverse: #f8fafc;
+  --ab-text-on-primary: #0f172a;          /* AA: 5.6:1 dark text on amber-600 */
+  --ab-text-on-accent: #ffffff;
+  --ab-text-link: #0369a1;                /* AA: 5.93:1 */
+  --ab-text-link-hover: #075985;
+
+  /* Brand Primary & Secondary (darker 600/700 for light mode contrast) */
+  --ab-primary: #d97706;                  /* amber-600 */
+  --ab-primary-hover: #b45309;            /* amber-700 */
+  --ab-primary-active: #92400e;           /* amber-800 */
+  --ab-primary-subtle: rgba(217, 119, 6, 0.10);
+  --ab-primary-subtle-hover: rgba(217, 119, 6, 0.18);
+  --ab-primary-text: #b45309;             /* AA: 5.02:1 on white */
+  --ab-on-primary: #0f172a;
+
+  --ab-secondary: #0284c7;                /* sky-600 */
+  --ab-secondary-hover: #0369a1;
+  --ab-secondary-active: #075985;
+  --ab-secondary-subtle: rgba(2, 132, 199, 0.10);
+  --ab-secondary-text: #0369a1;           /* AA: 5.93:1 */
+
+  /* Semantic Status (600/700 shades on light) */
+  --ab-success: #059669;
+  --ab-success-text: #047857;             /* AA: 5.48:1 */
+  --ab-success-bg: rgba(5, 150, 105, 0.10);
+  --ab-success-border: rgba(5, 150, 105, 0.30);
+
+  --ab-warning: #d97706;
+  --ab-warning-text: #b45309;             /* AA: 5.02:1 */
+  --ab-warning-bg: rgba(217, 119, 6, 0.10);
+  --ab-warning-border: rgba(217, 119, 6, 0.30);
+
+  --ab-danger: #e11d48;
+  --ab-danger-text: #be123c;              /* AA: 6.29:1 */
+  --ab-danger-bg: rgba(225, 29, 72, 0.10);
+  --ab-danger-border: rgba(225, 29, 72, 0.30);
+
+  --ab-info: #0284c7;
+  --ab-info-text: #0369a1;                /* AA: 5.93:1 */
+  --ab-info-bg: rgba(2, 132, 199, 0.10);
+  --ab-info-border: rgba(2, 132, 199, 0.30);
+
+  --ab-published: #9333ea;
+  --ab-published-text: #7e22ce;
+  --ab-published-bg: rgba(147, 51, 234, 0.10);
+  --ab-published-border: rgba(147, 51, 234, 0.30);
+
+  /* Borders for Light Mode */
+  --ab-border-subtle: #e2e8f0;            /* slate-200 */
+  --ab-border-default: #cbd5e1;           /* slate-300 */
+  --ab-border-strong: #94a3b8;            /* slate-400 */
+  --ab-border-input: #64748b;             /* slate-500: 4.76:1 on white */
+  --ab-border-focus: #b45309;
+  --ab-border-disabled: #e2e8f0;
+
+  /* Elevation Shadows (Softer on Light) */
+  --ab-shadow-color: 15 23 42;
+  --ab-shadow-xs: 0 1px 2px 0 rgb(var(--ab-shadow-color) / 0.06);
+  --ab-shadow-sm: 0 1px 3px 0 rgb(var(--ab-shadow-color) / 0.08), 0 1px 2px -1px rgb(var(--ab-shadow-color) / 0.08);
+  --ab-shadow-md: 0 4px 6px -1px rgb(var(--ab-shadow-color) / 0.08), 0 2px 4px -2px rgb(var(--ab-shadow-color) / 0.06);
+  --ab-shadow-lg: 0 10px 15px -3px rgb(var(--ab-shadow-color) / 0.10), 0 4px 6px -4px rgb(var(--ab-shadow-color) / 0.08);
+  --ab-shadow-xl: 0 20px 25px -5px rgb(var(--ab-shadow-color) / 0.12), 0 8px 10px -6px rgb(var(--ab-shadow-color) / 0.08);
+  --ab-shadow-focus: 0 0 0 3px rgba(217, 119, 6, 0.25);
+
+  /* Backward Compatibility Aliases */
+  --color-primary: var(--ab-primary);
+  --color-primary-hover: var(--ab-primary-hover);
+  --color-secondary: var(--ab-secondary);
+  --color-bg-app: var(--ab-bg-app);
+  --color-bg-surface: var(--ab-bg-surface);
+  --color-bg-surface-elevated: var(--ab-bg-surface-elevated);
+  --color-bg-overlay: var(--ab-bg-overlay);
+  --color-success: var(--ab-success);
+  --color-warning: var(--ab-warning);
+  --color-error: var(--ab-danger);
+  --color-text-main: var(--ab-text-primary);
+  --color-text-muted: var(--ab-text-secondary);
+  --color-border-subtle: var(--ab-border-subtle);
+  --color-border-medium: var(--ab-border-default);
+  --color-border-focus: var(--ab-border-focus);
+}
+
+/* ============================================================================
+ * 4. ACCESSIBILITY: REDUCED MOTION (WCAG 2.1)
+ * ==========================================================================*/
+@media (prefers-reduced-motion: reduce) {
+  :root,
+  [data-theme="dark"],
+  [data-theme="light"] {
+    --ab-duration-fast: 0.01ms;
+    --ab-duration-normal: 0.01ms;
+    --ab-duration-slow: 0.01ms;
+    --ab-duration-slower: 0.01ms;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Screen reader only utility */
+.ab-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Focus Visible Utility */
+:focus-visible {
+  outline: 2px solid var(--ab-border-focus);
+  outline-offset: 2px;
+  border-radius: var(--ab-radius-sm);
+}
