@@ -50,6 +50,10 @@ export interface OfflineSeismicRecord {
 class IndexedDBService {
   private dbPromise: Promise<IDBDatabase> | null = null;
 
+  public async initOfflineDB(): Promise<IDBDatabase> {
+    return this.getDB();
+  }
+
   public async getDB(): Promise<IDBDatabase> {
     if (this.dbPromise) {
       return this.dbPromise;
